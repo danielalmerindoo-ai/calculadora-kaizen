@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Calculadora de Kaizen | Grupo Autoglass</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjEwMTMgNjU4IDcxIDc2IiBmaWxsPSIjMjAyMUQ0Ij48cGF0aCBkPSJNIDEwNDIuOTMzNTk0IDY2MC45Mjk2ODggTCAxMDY0LjQ3MjY1NiA3MzEuNzUgQyAxMDY0LjYwOTM3NSA3MzIuMTk1MzEyIDEwNjUuMDE5NTMxIDczMi41IDEwNjUuNDg0Mzc1IDczMi41IEwgMTA4MC44MTY0MDYgNzMyLjUgQyAxMDgxLjUyNzM0NCA3MzIuNSAxMDgyLjAzNTE1NiA3MzEuODEyNSAxMDgxLjgyODEyNSA3MzEuMTMyODEyIEwgMTA2MC4yODkwNjIgNjYwLjMxMjUgQyAxMDYwLjE1NjI1IDY1OS44NjcxODggMTA1OS43NDIxODggNjU5LjU2MjUgMTA1OS4yNzczNDQgNjU5LjU2MjUgTCAxMDQzLjk0NTMxMiA2NTkuNTYyNSBDIDEwNDMuMjM0Mzc1IDY1OS41NjI1IDEwNDIuNzI2NTYyIDY2MC4yNDYwOTQgMTA0Mi45MzM1OTQgNjYwLjkyOTY4OCAiIGZpbGwtcnVsZT0ibm9uemVybyIvPjxwYXRoIGQ9Ik0gMTAxNi4xNjc5NjkgNzE4LjU3MDMxMiBMIDEwMzIuMTkxNDA2IDcxOC41NzAzMTIgQyAxMDMyLjYxMzI4MSA3MTguNTcwMzEyIDEwMzIuOTk2MDk0IDcxOC4zMjAzMTIgMTAzMy4xNjQwNjIgNzE3LjkzMzU5NCBMIDEwNDUuNzM0Mzc1IDY4OC45MDIzNDQgQyAxMDQ2LjAzOTA2MiA2ODguMjAzMTI1IDEwNDUuNTI3MzQ0IDY4Ny40MjE4NzUgMTA0NC43NjE3MTkgNjg3LjQyMTg3NSBMIDEwMjguNzQyMTg4IDY4Ny40MjE4NzUgQyAxMDI4LjMyMDMxMiA2ODcuNDIxODc1IDEwMjcuOTM3NSA2ODcuNjcxODc1IDEwMjcuNzY5NTMxIDY4OC4wNTg1OTQgTCAxMDE1LjE5OTIxOSA3MTcuMDg5ODQ0IEMgMTAxNC44OTQ1MzEgNzE3Ljc4OTA2MiAxMDE1LjQwNjI1IDcxOC41NzAzMTIgMTAxNi4xNjc5NjkgNzE4LjU3MDMxMiAiIGZpbGwtcnVsZT0ibm9uemVybyIvPjwvc3ZnPg==">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@200;300;400;500;700&amp;display=swap">
+<style>
+  /* ===== Identidade visual Grupo Autoglass (Manual V3.3), versão clara estilo Portal ===== */
+  :root {
+    --royal: #2021D4;     /* Azul Royal */
+    --apoio1: #050A34;    /* Azul Apoio 1 */
+    --apoio2: #0A64FF;    /* Azul Apoio 2 */
+    --apoio3: #73C6FF;    /* Azul Apoio 3 */
+    --cinza: #EEEDED;
+    --branco: #FFFFFF;
+
+    --bg: #FFFFFF;
+    --surface: #FFFFFF;
+    --ink: var(--apoio1);
+    --muted: #4B5173;
+    --field: var(--cinza);
+    --line: #E2E3EA;
+    --accent: var(--royal);
+    --accent-ink: #FFFFFF;
+    --soft: rgba(115, 198, 255, 0.28);
+    --tile: var(--apoio1);
+    --tile-hover: var(--royal);
+    --bar-bg: #FFFFFF;
+    --val: var(--royal);
+    --logo-t: #000000;    /* tipografia em preto sobre fundo claro */
+    --logo-s: var(--royal); /* símbolo em Azul Royal */
+    --shadow: 0 -8px 24px rgba(5, 10, 52, 0.10);
+    --font: "Onest", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color-scheme: light;
+  }
+  :root[data-theme="dark"] {
+    --bg: var(--apoio1); --surface: rgba(255,255,255,0.07); --ink: #FFFFFF; --muted: rgba(255,255,255,0.68);
+    --field: rgba(255,255,255,0.10); --line: rgba(255,255,255,0.18); --accent: var(--apoio2);
+    --soft: rgba(115,198,255,0.18); --tile: var(--royal); --tile-hover: var(--apoio2);
+    --bar-bg: var(--apoio1); --val: var(--apoio3); --logo-t: #FFFFFF; --logo-s: #FFFFFF;
+    --shadow: 0 -8px 24px rgba(0,0,0,0.4);
+    color-scheme: dark;
+  }
+
+  :root { box-sizing: border-box; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); background: var(--bg); }
+  *, *::before, *::after { box-sizing: inherit; }
+  body {
+    margin: 0; min-height: 100vh; background: var(--bg); color: var(--ink);
+    font-family: var(--font); font-weight: 300; font-size: 17px; line-height: 1.5;
+    -webkit-text-size-adjust: 100%;
+  }
+  button, input { font-family: inherit; }
+
+  /* Cabeçalho: divisão | assinatura (como no manual e no Portal) */
+  .site-top { border-bottom: 1px solid var(--line); background: var(--bg); }
+  .top-in { max-width: 1120px; margin: 0 auto; padding: 16px 16px; display: flex; align-items: center; gap: 14px; }
+  .top-div { margin: 0; font-weight: 300; font-size: 0.78rem; line-height: 1.15; text-transform: uppercase; color: var(--ink); }
+  .top-sep { width: 1px; align-self: stretch; background: var(--ink); opacity: 0.7; }
+  .logo { display: block; width: 168px; height: auto; flex: none; }   /* mínimo em tela: 140 px */
+  .lg-t { fill: var(--logo-t); }
+  .lg-s { fill: var(--logo-s); }
+
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 18px 16px 250px; }
+
+  /* Barra de navegação: seta de voltar + caminho */
+  .navrow { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin: 0 0 14px; }
+  .back {
+    display: inline-flex; align-items: center; gap: 6px; background: transparent; color: var(--accent);
+    border: 2px solid var(--accent); border-radius: 999px; padding: 8px 16px 8px 10px; min-height: 44px;
+    font-weight: 500; font-size: 0.9rem; cursor: pointer;
+  }
+  .back:hover { background: var(--accent); color: var(--accent-ink); }
+  .back svg { width: 20px; height: 20px; }
+  nav.crumb { font-weight: 500; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.02em; color: var(--muted); }
+  nav.crumb button { background: none; border: 0; padding: 8px 0; font: inherit; text-transform: inherit; letter-spacing: inherit; color: var(--accent); cursor: pointer; }
+  nav.crumb button:hover { text-decoration: underline; }
+
+  .kicker { font-weight: 700; font-size: 1rem; text-transform: uppercase; color: var(--accent); margin: 0; }
+  h1.page { font-weight: 700; font-size: 1.8rem; line-height: 1.1; text-transform: uppercase; margin: 2px 0 6px; letter-spacing: -0.005em; }
+  .lead { color: var(--muted); margin: 6px 0 20px; }
+  h2 { font-weight: 700; font-size: 1.1rem; margin: 0; }
+
+  /* Início */
+  .hero { margin: 6px 0 22px; }
+  .hero-1 { font-weight: 200; font-size: clamp(2rem, 9vw, 3.2rem); line-height: 1.05; margin: 0; text-transform: uppercase; }
+  .hero-2 { font-weight: 700; font-size: clamp(2rem, 9vw, 3.2rem); line-height: 1.05; margin: 0 0 10px; text-transform: uppercase; color: var(--accent); }
+  .hero-3 { font-weight: 300; margin: 0; color: var(--muted); font-size: 1.02rem; }
+  .home-q { font-weight: 500; font-size: 1.2rem; margin: 4px 0 16px; }
+  #home, #fin { max-width: 900px; }
+
+  /* Blocos de escolha (estilo Portal) */
+  .tiles { display: grid; gap: 14px; }
+  .choice {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%; text-align: left;
+    background: var(--tile); color: #FFFFFF; border: 0; border-radius: 12px;
+    padding: 22px 20px; cursor: pointer; font-size: inherit; overflow: hidden;
+  }
+  .choice strong { display: block; font-weight: 700; font-size: 1.12rem; text-transform: uppercase; letter-spacing: 0.005em; margin-bottom: 4px; }
+  .choice span { color: rgba(255,255,255,0.80); font-size: 0.93rem; font-weight: 300; display: block; }
+  .choice:hover { background: var(--tile-hover); }
+  .choice:focus-visible { outline: 3px solid var(--apoio3); outline-offset: 2px; }
+  .deco { width: 76px; height: 46px; flex: none; --royal: #0A64FF; --apoio2: #73C6FF; --apoio3: #FFFFFF; }
+  .tip { color: var(--muted); font-size: 0.9rem; margin-top: 18px; }
+
+  /* Etapas */
+  .card { background: var(--surface); border: 1.5px solid var(--line); border-radius: 16px; padding: 18px 16px; margin-bottom: 14px; }
+  .step { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .pill { display: inline-block; background: var(--accent); color: var(--accent-ink); border-radius: 999px; padding: 4px 14px; font-weight: 500; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; }
+  .hint { color: var(--muted); font-size: 0.88rem; margin: 8px 0 0; }
+  .card .hint.top { margin: 10px 0 2px; }
+  .field-label { display: block; font-weight: 500; font-size: 0.95rem; margin: 16px 0 8px; }
+
+  input[type="text"] {
+    width: 100%; font-weight: 400; font-size: 1.25rem; color: var(--ink); background: var(--field);
+    border: 2px solid transparent; border-radius: 12px; padding: 12px; min-height: 52px; font-variant-numeric: tabular-nums;
+  }
+  input[type="text"]::placeholder { color: var(--muted); opacity: 0.6; }
+  input[type="text"]:focus { outline: none; border-color: var(--accent); background: var(--surface); }
+  input.time-in { text-align: center; }
+
+  .time { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .time small { display: block; text-align: center; color: var(--muted); font-size: 0.82rem; margin-top: 4px; }
+
+  .seg { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .seg button {
+    font-weight: 500; font-size: 0.95rem; min-height: 48px; padding: 10px 8px; cursor: pointer;
+    background: var(--field); color: var(--ink); border: 2px solid transparent; border-radius: 999px;
+  }
+  .seg button[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); }
+  button:focus-visible { outline: 3px solid var(--apoio3); outline-offset: 2px; }
+
+  .money { position: relative; }
+  .money b { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--muted); font-weight: 500; }
+  .money input { padding-left: 46px; }
+
+  .note { background: var(--soft); color: var(--ink); border-radius: 12px; padding: 12px 14px 12px 16px; margin: 0 0 14px; font-size: 0.93rem; font-weight: 400; border-left: 5px solid var(--accent); }
+
+  pre.conta {
+    margin: 12px 0 0; white-space: pre-wrap; word-wrap: break-word; font-family: var(--font); font-weight: 400; font-size: 0.92rem; line-height: 1.55;
+    background: var(--field); border-radius: 12px; padding: 14px;
+  }
+  pre.conta.empty { color: var(--muted); font-weight: 300; }
+
+  .clear { background: none; border: 0; color: var(--muted); text-decoration: underline; font-size: 0.92rem; font-weight: 300; padding: 10px 0; cursor: pointer; }
+
+  /* Resultado: barra fixa no celular, painel lateral no computador */
+  #resultBar {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 5; background: var(--bar-bg); color: var(--ink);
+    border-top: 2px solid var(--accent); box-shadow: var(--shadow);
+    padding: 12px 16px calc(12px + env(safe-area-inset-bottom, 0px));
+  }
+  #resultBar .inner { max-width: 560px; margin: 0 auto; }
+  #rLabel { font-weight: 500; font-size: 0.88rem; color: var(--muted); }
+  #rValue {
+    font-weight: 200; color: var(--val); font-size: clamp(2.3rem, 13vw, 3.4rem); line-height: 1.05;
+    letter-spacing: -0.01em; font-variant-numeric: tabular-nums; margin: 2px 0 10px;
+  }
+  #rValue.idle { opacity: 0.4; }
+  #rValue.small { font-size: 1.3rem; font-weight: 500; color: var(--ink); text-transform: uppercase; line-height: 1.25; margin: 6px 0 12px; }
+  .copyrow { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .copyrow button {
+    min-height: 48px; border-radius: 999px; cursor: pointer; font-weight: 500; font-size: 0.86rem;
+    text-transform: uppercase; letter-spacing: 0.02em; border: 2px solid var(--accent);
+  }
+  #copyVal { background: var(--accent); color: var(--accent-ink); }
+  #copyConta { background: transparent; color: var(--accent); }
+  .copyrow button:disabled { opacity: 0.4; cursor: not-allowed; }
+  #rSub { font-size: 0.84rem; color: var(--muted); margin-top: 8px; min-height: 1.3em; }
+
+  [hidden] { display: none !important; }
+  @media (prefers-reduced-motion: no-preference) { .choice, .seg button, input, .back { transition: border-color .12s, background-color .12s, color .12s; } }
+
+  /* ===== Computador / notebook ===== */
+  @media (min-width: 900px) {
+    body { font-size: 18px; }
+    .top-in { padding: 20px 32px; gap: 22px; }
+    .top-div { font-size: 1.05rem; }
+    .logo { width: 250px; }
+    .wrap { padding: 28px 32px 70px; }
+    .hero-1, .hero-2 { font-size: 3.6rem; }
+    #home .tiles { grid-template-columns: repeat(2, 1fr); }
+    #fin .tiles { grid-template-columns: repeat(3, 1fr); }
+    .choice { flex-direction: column; align-items: flex-start; justify-content: space-between; min-height: 210px; padding: 26px 24px; gap: 22px; }
+    .deco { width: 96px; height: 58px; }
+
+    .layout.with-bar { display: grid; grid-template-columns: minmax(0, 1fr) 390px; gap: 36px; align-items: start; }
+    #prodCards, #calcForm { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; align-items: start; }
+    #prodCards .card, #calcForm .card { margin-bottom: 0; }
+
+    #resultBar {
+      position: sticky; top: 24px; left: auto; right: auto; bottom: auto;
+      border: 2px solid var(--accent); border-radius: 18px; box-shadow: none; padding: 22px;
+    }
+    #resultBar .inner { max-width: none; }
+    #rValue { font-size: 3.2rem; }
+    #rValue.small { font-size: 1.4rem; }
+  }
+</style>
+</head>
+<body>
+<header class="site-top">
+  <div class="top-in">
+    <p class="top-div">Célula de Inovação<br>e Melhoria</p>
+    <span class="top-sep" aria-hidden="true"></span>
+    <svg class="logo" viewBox="796 658 660 76" role="img" aria-label="Grupo Autoglass"><g class="lg-t"><path d="M 864.460938 697.308594 L 852.957031 697.308594 L 852.957031 676.394531 L 864.515625 676.394531 C 873.175781 676.394531 876.773438 681.15625 876.773438 686.734375 C 876.773438 692.484375 873.175781 697.308594 864.460938 697.308594 M 879.101562 686.734375 C 879.101562 679.589844 874.105469 674.246094 864.460938 674.246094 L 851.75 674.246094 C 851.164062 674.246094 850.691406 674.71875 850.691406 675.304688 L 850.691406 697.308594 L 823.984375 697.308594 C 823.398438 697.308594 822.925781 697.785156 822.925781 698.371094 C 822.925781 698.957031 823.398438 699.429688 823.984375 699.429688 L 840.164062 699.429688 C 838.972656 709.277344 831.113281 716.421875 820.890625 716.421875 C 809.269531 716.421875 800.441406 707.535156 800.441406 696.03125 C 800.441406 684.527344 809.097656 675.695312 820.542969 675.695312 C 829.113281 675.695312 836.101562 680.734375 839.15625 688.101562 C 839.324219 688.5 839.707031 688.769531 840.140625 688.769531 L 840.269531 688.769531 C 841.019531 688.769531 841.542969 688.003906 841.253906 687.308594 C 837.777344 678.949219 829.941406 673.492188 820.542969 673.492188 C 807.820312 673.492188 798.117188 683.425781 798.117188 696.03125 C 798.117188 708.695312 807.992188 718.570312 820.890625 718.570312 C 832.398438 718.570312 841.167969 710.410156 842.40625 699.429688 L 850.691406 699.429688 L 850.691406 716.757812 C 850.691406 717.34375 851.164062 717.816406 851.75 717.816406 L 851.894531 717.816406 C 852.480469 717.816406 852.957031 717.34375 852.957031 716.757812 L 852.957031 699.402344 L 864.515625 699.402344 C 865.5625 699.402344 866.492188 699.34375 867.421875 699.226562 L 875.5625 717.195312 C 875.734375 717.574219 876.113281 717.816406 876.527344 717.816406 L 876.644531 717.816406 C 877.417969 717.816406 877.929688 717.023438 877.613281 716.320312 L 869.6875 698.761719 C 875.902344 697.136719 879.101562 692.484375 879.101562 686.734375 " fill-rule="nonzero"/><path d="M 913.839844 702.363281 C 913.839844 710.90625 909.25 716.421875 901 716.421875 C 892.808594 716.421875 888.160156 710.90625 888.160156 702.363281 L 888.160156 675.304688 C 888.160156 674.71875 887.683594 674.246094 887.097656 674.246094 L 886.957031 674.246094 C 886.371094 674.246094 885.894531 674.71875 885.894531 675.304688 L 885.894531 702.1875 C 885.894531 712.414062 891.644531 718.570312 901 718.570312 C 910.351562 718.570312 916.046875 712.414062 916.046875 702.1875 L 916.046875 675.304688 C 916.046875 674.71875 915.574219 674.246094 914.988281 674.246094 L 914.898438 674.246094 C 914.3125 674.246094 913.839844 674.71875 913.839844 675.304688 Z M 913.839844 702.363281 " fill-rule="nonzero"/><path d="M 939.921875 697.539062 L 928.652344 697.539062 L 928.652344 676.394531 L 939.980469 676.394531 C 948.636719 676.394531 952.238281 681.214844 952.238281 686.851562 C 952.238281 692.71875 948.636719 697.539062 939.921875 697.539062 M 939.863281 674.246094 L 927.503906 674.246094 C 926.917969 674.246094 926.445312 674.71875 926.445312 675.304688 L 926.445312 716.757812 C 926.445312 717.34375 926.917969 717.816406 927.503906 717.816406 L 927.59375 717.816406 C 928.175781 717.816406 928.652344 717.34375 928.652344 716.757812 L 928.652344 699.691406 L 939.921875 699.691406 C 949.625 699.691406 954.5625 694.171875 954.5625 686.851562 C 954.5625 679.648438 949.566406 674.246094 939.863281 674.246094 " fill-rule="nonzero"/><path d="M 981.863281 716.421875 C 970.304688 716.421875 961.472656 707.535156 961.472656 696.03125 C 961.472656 684.527344 970.304688 675.695312 981.863281 675.695312 C 993.480469 675.695312 1002.3125 684.527344 1002.3125 696.03125 C 1002.3125 707.535156 993.480469 716.421875 981.863281 716.421875 M 981.863281 673.492188 C 968.964844 673.492188 959.148438 683.421875 959.148438 696.03125 C 959.148438 708.695312 968.964844 718.570312 981.863281 718.570312 C 994.878906 718.570312 1004.636719 708.695312 1004.636719 696.03125 C 1004.636719 683.421875 994.878906 673.492188 981.863281 673.492188 " fill-rule="nonzero"/><path d="M 1165.027344 701.5 C 1165.027344 706.828125 1162.074219 710.472656 1156.867188 710.472656 C 1151.65625 710.472656 1148.648438 706.828125 1148.648438 701.5 L 1148.648438 675.359375 C 1148.648438 674.773438 1148.171875 674.300781 1147.585938 674.300781 L 1140.796875 674.300781 C 1140.210938 674.300781 1139.734375 674.773438 1139.734375 675.359375 L 1139.734375 700.976562 C 1139.734375 711.859375 1146.449219 718.570312 1156.867188 718.570312 C 1167.339844 718.570312 1173.996094 711.859375 1173.996094 700.976562 L 1173.996094 675.359375 C 1173.996094 674.773438 1173.523438 674.300781 1172.9375 674.300781 L 1166.085938 674.300781 C 1165.5 674.300781 1165.027344 674.773438 1165.027344 675.359375 Z M 1165.027344 701.5 " fill-rule="nonzero"/><path d="M 1179.476562 681.707031 L 1187.5625 681.707031 L 1187.5625 716.644531 C 1187.5625 717.230469 1188.039062 717.703125 1188.625 717.703125 L 1195.472656 717.703125 C 1196.058594 717.703125 1196.535156 717.230469 1196.535156 716.644531 L 1196.535156 681.707031 L 1204.621094 681.707031 C 1205.203125 681.707031 1205.679688 681.234375 1205.679688 680.648438 L 1205.679688 675.359375 C 1205.679688 674.773438 1205.203125 674.300781 1204.621094 674.300781 L 1179.476562 674.300781 C 1178.894531 674.300781 1178.417969 674.773438 1178.417969 675.359375 L 1178.417969 680.648438 C 1178.417969 681.234375 1178.894531 681.707031 1179.476562 681.707031 " fill-rule="nonzero"/><path d="M 1230.363281 710.121094 C 1222.207031 710.121094 1216.472656 704.105469 1216.472656 696.058594 C 1216.472656 687.902344 1222.207031 681.882812 1230.363281 681.882812 C 1238.523438 681.882812 1244.195312 687.902344 1244.195312 696.058594 C 1244.195312 704.105469 1238.523438 710.121094 1230.363281 710.121094 M 1230.363281 673.492188 C 1217.054688 673.492188 1207.386719 683.152344 1207.386719 695.945312 C 1207.386719 708.792969 1217.054688 718.570312 1230.363281 718.570312 C 1243.734375 718.570312 1253.339844 708.792969 1253.339844 695.945312 C 1253.339844 683.152344 1243.734375 673.492188 1230.363281 673.492188 " fill-rule="nonzero"/><path d="M 1282.273438 695.617188 L 1282.273438 700.035156 C 1282.273438 700.621094 1282.746094 701.09375 1283.332031 701.09375 L 1294.484375 701.09375 C 1292.632812 706.710938 1287.597656 710.585938 1280.941406 710.585938 C 1272.605469 710.585938 1266.878906 704.335938 1266.878906 696.058594 C 1266.878906 687.667969 1272.546875 681.59375 1280.652344 681.59375 C 1286.1875 681.59375 1290.664062 684.664062 1292.664062 688.933594 C 1292.835938 689.296875 1293.210938 689.519531 1293.613281 689.519531 L 1301.015625 689.519531 C 1301.742188 689.519531 1302.261719 688.796875 1302.019531 688.113281 C 1298.777344 679.046875 1290.335938 673.492188 1280.480469 673.492188 C 1267.28125 673.492188 1257.789062 683.210938 1257.789062 696.003906 C 1257.789062 708.792969 1267.398438 718.570312 1280.765625 718.570312 C 1293.265625 718.570312 1303.164062 708.964844 1303.164062 696.464844 C 1303.164062 696.304688 1303.152344 695.9375 1303.132812 695.5625 C 1303.105469 695 1302.636719 694.554688 1302.074219 694.554688 L 1283.332031 694.554688 C 1282.746094 694.554688 1282.273438 695.03125 1282.273438 695.617188 " fill-rule="nonzero"/><path d="M 1317.347656 674.300781 L 1310.496094 674.300781 C 1309.914062 674.300781 1309.4375 674.773438 1309.4375 675.359375 L 1309.4375 717.703125 L 1328.054688 717.703125 C 1328.640625 717.703125 1329.113281 717.230469 1329.113281 716.644531 L 1329.113281 711.359375 C 1329.113281 710.773438 1328.640625 710.296875 1328.054688 710.296875 L 1318.410156 710.296875 L 1318.410156 675.359375 C 1318.410156 674.773438 1317.933594 674.300781 1317.347656 674.300781 " fill-rule="nonzero"/><path d="M 1400.152344 690.617188 L 1396.214844 690.617188 C 1392.742188 690.617188 1391.066406 688.652344 1391.066406 686.335938 C 1391.066406 683.792969 1392.742188 681.824219 1396.214844 681.824219 L 1411.996094 681.824219 C 1412.582031 681.824219 1413.058594 681.347656 1413.058594 680.761719 L 1413.058594 675.359375 C 1413.058594 674.773438 1412.582031 674.300781 1411.996094 674.300781 L 1394.652344 674.300781 C 1386.839844 674.300781 1381.574219 679.101562 1381.574219 686.164062 C 1381.574219 693.109375 1386.839844 697.851562 1394.425781 697.851562 L 1398.589844 697.851562 C 1404.433594 697.851562 1406.113281 700.804688 1406.113281 703.871094 C 1406.113281 707.113281 1403.914062 710.179688 1398.53125 710.179688 L 1382.808594 710.179688 C 1382.222656 710.179688 1381.75 710.65625 1381.75 711.242188 L 1381.75 716.644531 C 1381.75 717.230469 1382.222656 717.703125 1382.808594 717.703125 L 1399.976562 717.703125 C 1410.339844 717.703125 1415.371094 711.453125 1415.371094 703.988281 C 1415.371094 696.636719 1410.394531 690.617188 1400.152344 690.617188 " fill-rule="nonzero"/><path d="M 1437.101562 690.617188 L 1433.164062 690.617188 C 1429.695312 690.617188 1428.015625 688.652344 1428.015625 686.335938 C 1428.015625 683.792969 1429.695312 681.824219 1433.164062 681.824219 L 1448.945312 681.824219 C 1449.53125 681.824219 1450.003906 681.347656 1450.003906 680.761719 L 1450.003906 675.359375 C 1450.003906 674.773438 1449.53125 674.300781 1448.945312 674.300781 L 1431.601562 674.300781 C 1423.792969 674.300781 1418.523438 679.101562 1418.523438 686.164062 C 1418.523438 693.109375 1423.792969 697.851562 1431.371094 697.851562 L 1435.535156 697.851562 C 1441.382812 697.851562 1443.0625 700.804688 1443.0625 703.871094 C 1443.0625 707.113281 1440.863281 710.179688 1435.480469 710.179688 L 1419.757812 710.179688 C 1419.171875 710.179688 1418.699219 710.65625 1418.699219 711.242188 L 1418.699219 716.644531 C 1418.699219 717.230469 1419.171875 717.703125 1419.757812 717.703125 L 1436.925781 717.703125 C 1447.285156 717.703125 1452.320312 711.453125 1452.320312 703.988281 C 1452.320312 696.636719 1447.34375 690.617188 1437.101562 690.617188 " fill-rule="nonzero"/><path d="M 1108.359375 699.589844 L 1114.488281 682.285156 L 1116.722656 682.285156 L 1122.851562 699.589844 Z M 1119.84375 674.300781 L 1109.09375 674.300781 C 1108.644531 674.300781 1108.242188 674.582031 1108.09375 675.007812 L 1093.472656 716.289062 C 1093.226562 716.980469 1093.738281 717.703125 1094.472656 717.703125 L 1101.195312 717.703125 C 1101.644531 717.703125 1102.042969 717.421875 1102.191406 716.996094 L 1105.878906 706.59375 L 1125.328125 706.59375 L 1129.015625 716.996094 C 1129.164062 717.421875 1129.566406 717.703125 1130.015625 717.703125 L 1136.738281 717.703125 C 1137.46875 717.703125 1137.980469 716.980469 1137.734375 716.289062 L 1123.113281 675.007812 C 1122.964844 674.582031 1122.566406 674.300781 1122.117188 674.300781 Z M 1119.84375 674.300781 " fill-rule="nonzero"/><path d="M 1347.996094 699.589844 L 1354.125 682.285156 L 1356.359375 682.285156 L 1362.488281 699.589844 Z M 1359.480469 674.300781 L 1348.730469 674.300781 C 1348.28125 674.300781 1347.878906 674.582031 1347.730469 675.007812 L 1333.109375 716.289062 C 1332.863281 716.980469 1333.375 717.703125 1334.105469 717.703125 L 1340.832031 717.703125 C 1341.28125 717.703125 1341.679688 717.421875 1341.828125 716.996094 L 1345.515625 706.59375 L 1364.964844 706.59375 L 1368.652344 716.996094 C 1368.800781 717.421875 1369.203125 717.703125 1369.652344 717.703125 L 1376.375 717.703125 C 1377.105469 717.703125 1377.617188 716.980469 1377.371094 716.289062 L 1362.75 675.007812 C 1362.601562 674.582031 1362.203125 674.300781 1361.753906 674.300781 Z M 1359.480469 674.300781 " fill-rule="nonzero"/></g><g class="lg-s"><path d="M 1042.933594 660.929688 L 1064.472656 731.75 C 1064.609375 732.195312 1065.019531 732.5 1065.484375 732.5 L 1080.816406 732.5 C 1081.527344 732.5 1082.035156 731.8125 1081.828125 731.132812 L 1060.289062 660.3125 C 1060.15625 659.867188 1059.742188 659.5625 1059.277344 659.5625 L 1043.945312 659.5625 C 1043.234375 659.5625 1042.726562 660.246094 1042.933594 660.929688 " fill-rule="nonzero"/><path d="M 1016.167969 718.570312 L 1032.191406 718.570312 C 1032.613281 718.570312 1032.996094 718.320312 1033.164062 717.933594 L 1045.734375 688.902344 C 1046.039062 688.203125 1045.527344 687.421875 1044.761719 687.421875 L 1028.742188 687.421875 C 1028.320312 687.421875 1027.9375 687.671875 1027.769531 688.058594 L 1015.199219 717.089844 C 1014.894531 717.789062 1015.40625 718.570312 1016.167969 718.570312 " fill-rule="nonzero"/></g></svg>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="navrow" id="crumb" hidden>
+    <button class="back" id="backBtn" type="button" aria-label="Voltar">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span>Voltar</span>
+    </button>
+    <nav class="crumb" id="crumbList" aria-label="Navegação"></nav>
+  </div>
+
+  <div class="layout" id="layout">
+    <div class="main">
+      <div class="hero" id="hero">
+        <p class="hero-1">Calculadora</p>
+        <p class="hero-2">de Kaizen</p>
+        <p class="hero-3">Viva a cultura da melhoria contínua.</p>
+      </div>
+      <div id="head" hidden>
+        <p class="kicker" id="kicker"></p>
+        <h1 class="page" id="pageTitle"></h1>
+      </div>
+
+      <!-- INÍCIO -->
+      <section id="home">
+        <p class="home-q">Vamos calcular o retorno da sua melhoria? Escolha uma opção:</p>
+        <div class="tiles">
+          <button class="choice" type="button" data-go="prod">
+            <div>
+              <strong>Retorno de processo</strong>
+              <span>A melhoria reduziu o tempo de uma atividade ou processo.</span>
+            </div>
+            <svg class="deco" viewBox="0 0 120 72" aria-hidden="true"><polygon points="2,72 5,72 15,0 12,0" fill="var(--royal)"/><polygon points="13,72 19,72 29,0 23,0" fill="var(--royal)"/><polygon points="27,72 36,72 46,0 37,0" fill="var(--royal)"/><polygon points="44,72 57,72 67,0 54,0" fill="var(--apoio2)"/><polygon points="65,72 82,72 92,0 75,0" fill="var(--apoio2)"/><polygon points="90,72 112,72 122,0 100,0" fill="var(--apoio3)"/></svg>
+          </button>
+          <button class="choice" type="button" data-go="fin">
+            <div>
+              <strong>Retorno financeiro</strong>
+              <span>Custo evitado, aumento de receita ou redução de custo.</span>
+            </div>
+            <svg class="deco" viewBox="0 0 120 72" aria-hidden="true"><polygon points="2,72 18,72 28,58 12,58" fill="var(--apoio3)"/><polygon points="26,72 42,72 52,50 36,50" fill="var(--apoio3)"/><polygon points="50,72 66,72 76,40 60,40" fill="var(--apoio2)"/><polygon points="74,72 90,72 100,28 84,28" fill="var(--apoio2)"/><polygon points="98,72 114,72 124,14 108,14" fill="var(--royal)"/><polygon points="122,72 138,72 148,0 132,0" fill="var(--royal)"/></svg>
+          </button>
+        </div>
+        <p class="tip">Preencha as etapas, copie o resultado e a conta e cole no chamado.</p>
+      </section>
+
+      <!-- RETORNO FINANCEIRO: ESCOLHA -->
+      <section id="fin" hidden>
+        <p class="lead">Escolha uma opção abaixo:</p>
+        <div class="tiles">
+          <button class="choice" type="button" data-go="evit">
+            <div>
+              <strong>Custo evitado</strong>
+              <span>Um custo que existia deixou de ter com a melhoria (ex.: troca de fornecedor por um mais barato).</span>
+            </div>
+            <svg class="deco" viewBox="0 0 120 72" aria-hidden="true"><polygon points="2,72 18,72 28,0 12,0" fill="var(--royal)"/><polygon points="26,72 42,72 52,14 36,14" fill="var(--royal)"/><polygon points="50,72 66,72 76,28 60,28" fill="var(--apoio2)"/><polygon points="74,72 90,72 100,40 84,40" fill="var(--apoio2)"/><polygon points="98,72 114,72 124,50 108,50" fill="var(--apoio3)"/><polygon points="122,72 138,72 148,58 132,58" fill="var(--apoio3)"/></svg>
+          </button>
+          <button class="choice" type="button" data-go="rec">
+            <div>
+              <strong>Aumento de receita</strong>
+              <span>A melhoria fez a receita crescer, sem aumentar custos ou despesas.</span>
+            </div>
+            <svg class="deco" viewBox="0 0 120 72" aria-hidden="true"><polygon points="2,72 18,72 28,58 12,58" fill="var(--apoio3)"/><polygon points="26,72 42,72 52,50 36,50" fill="var(--apoio3)"/><polygon points="50,72 66,72 76,40 60,40" fill="var(--apoio2)"/><polygon points="74,72 90,72 100,28 84,28" fill="var(--apoio2)"/><polygon points="98,72 114,72 124,14 108,14" fill="var(--royal)"/><polygon points="122,72 138,72 148,0 132,0" fill="var(--royal)"/></svg>
+          </button>
+          <button class="choice" type="button" data-go="red">
+            <div>
+              <strong>Redução de custo</strong>
+              <span>Um custo do processo diminuiu depois da melhoria, com ou sem investimento (ex.: conta de água).</span>
+            </div>
+            <svg class="deco" viewBox="0 0 120 72" aria-hidden="true"><polygon points="2,72 18,72 28,0 12,0" fill="var(--royal)"/><polygon points="26,72 42,72 52,14 36,14" fill="var(--royal)"/><polygon points="50,72 66,72 76,28 60,28" fill="var(--apoio2)"/><polygon points="74,72 90,72 100,40 84,40" fill="var(--apoio2)"/><polygon points="98,72 114,72 124,50 108,50" fill="var(--apoio3)"/><polygon points="122,72 138,72 148,58 132,58" fill="var(--apoio3)"/></svg>
+          </button>
+        </div>
+      </section>
+
+      <!-- RETORNO DE PROCESSO -->
+      <section id="prod" hidden>
+        <p class="lead">Informe como a atividade era antes e como ficou depois da melhoria.</p>
+        <div id="prodCards"></div>
+        <p class="note" id="warnFreq" hidden>Você informou frequências diferentes para antes e depois da melhoria. Confira se está correto.</p>
+        <div class="card">
+          <div class="step"><span class="pill">Etapa 3</span><h2>Conta para o chamado</h2></div>
+          <p class="hint top">Copie a conta e cole na abertura do chamado de Kaizen.</p>
+          <pre class="conta empty" id="prodConta">Preencha as etapas 1 e 2 para gerar a conta.</pre>
+        </div>
+        <button class="clear" type="button" id="prodClear">Limpar campos</button>
+      </section>
+
+      <!-- RETORNO FINANCEIRO: CÁLCULOS -->
+      <section id="calc" hidden>
+        <p class="note">Lembrete: o registro de Kaizen precisa de pelo menos 2 meses de acompanhamento da melhoria.</p>
+        <div id="calcForm"></div>
+        <div class="card">
+          <div class="step"><span class="pill">Etapa 3</span><h2>Conta para o chamado</h2></div>
+          <p class="hint top">Copie a conta e cole na abertura do chamado de Kaizen.</p>
+          <pre class="conta empty" id="calcConta">Preencha as etapas 1 e 2 para gerar a conta.</pre>
+        </div>
+        <button class="clear" type="button" id="calcClear">Limpar campos</button>
+      </section>
+    </div>
+
+    <!-- RESULTADO -->
+    <aside id="resultBar" hidden>
+      <div class="inner">
+        <div id="rLabel"></div>
+        <div id="rValue" class="idle">00000:00</div>
+        <div class="copyrow">
+          <button id="copyVal" type="button" disabled>Copiar resultado</button>
+          <button id="copyConta" type="button" disabled>Copiar conta</button>
+        </div>
+        <div id="rSub" aria-live="polite"></div>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<script>
+(function () {
+  // ======= Premissas (iguais à planilha e ao PDF de exemplos) =======
+  var DIAS_UTEIS_MES = 22;
+  var SEMANAS_ANO = 52;
+  var MESES_ANO = 12;
+
+  var $ = function (s) { return document.querySelector(s); };
+  var $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
+  var pad = function (n, l) { n = String(n); while (n.length < l) n = "0" + n; return n; };
+  var brl = new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" });
+  function money(n) { return brl.format(n).replace(/\u00a0/g, " "); }
+  function num(n) { return n.toLocaleString("pt-BR"); }
+  function parseBRL(s) {
+    s = String(s == null ? "" : s).replace(/[^\d,.\-]/g, "");
+    if (s === "") return NaN;
+    if (s.indexOf(",") >= 0) s = s.replace(/\./g, "").replace(",", ".");
+    return parseFloat(s);
+  }
+
+  /* ---------- telas e navegação ---------- */
+  var S = {
+    home: { sec: "home" },
+    prod: { sec: "prod", parent: "home", kicker: "Retorno de processo", title: "Rendimento operacional", crumbs: [["Início", "home"], ["Retorno de processo"]] },
+    fin:  { sec: "fin", parent: "home", title: "Retorno financeiro", crumbs: [["Início", "home"], ["Retorno financeiro"]] },
+    evit: { sec: "calc", parent: "fin", kicker: "Retorno financeiro", title: "Custo evitado", crumbs: [["Início", "home"], ["Retorno financeiro", "fin"], ["Custo evitado"]] },
+    rec:  { sec: "calc", parent: "fin", kicker: "Retorno financeiro", title: "Aumento de receita", crumbs: [["Início", "home"], ["Retorno financeiro", "fin"], ["Aumento de receita"]] },
+    red:  { sec: "calc", parent: "fin", kicker: "Retorno financeiro", title: "Redução de custo", crumbs: [["Início", "home"], ["Retorno financeiro", "fin"], ["Redução de custo"]] }
+  };
+  var cur = "home";
+
+  function go(s, fromPop) {
+    cur = s;
+    var d = S[s];
+    ["home", "prod", "fin", "calc"].forEach(function (id) { $("#" + id).hidden = (id !== d.sec); });
+    var home = (s === "home");
+    $("#hero").hidden = !home;
+    $("#crumb").hidden = home;
+    $("#head").hidden = home;
+    if (!home) {
+      $("#crumbList").innerHTML = d.crumbs.map(function (c) {
+        return c[1] ? '<button type="button" data-crumb="' + c[1] + '">' + c[0] + "</button>" : "<span>" + c[0] + "</span>";
+      }).join(" - ");
+      $("#kicker").textContent = d.kicker || "";
+      $("#kicker").hidden = !d.kicker;
+      $("#pageTitle").textContent = d.title;
+    }
+    var bar = (d.sec === "prod" || d.sec === "calc");
+    $("#resultBar").hidden = !bar;
+    $("#layout").classList.toggle("with-bar", bar);
+    if (d.sec === "calc") renderCalc(s);
+    window.scrollTo(0, 0);
+    if (s === "prod") calcProd();
+    if (d.sec === "calc") calcFin();
+    if (!fromPop) { try { history.pushState({ s: s }, ""); } catch (e) {} }
+  }
+  document.addEventListener("click", function (e) {
+    var g = e.target.closest("[data-go]");
+    if (g) { go(g.getAttribute("data-go")); return; }
+    var c = e.target.closest("[data-crumb]");
+    if (c) go(c.getAttribute("data-crumb"));
+  });
+  $("#backBtn").addEventListener("click", function () { go(S[cur].parent || "home"); });
+  window.addEventListener("popstate", function (e) { go((e.state && e.state.s) || "home", true); });
+  try { history.replaceState({ s: "home" }, ""); } catch (e) {}
+
+  /* ---------- resultado / copiar ---------- */
+  var copyV = "", copyC = "";
+  function showResult(o) {
+    $("#rLabel").textContent = o.label;
+    var v = $("#rValue");
+    v.textContent = o.value;
+    v.className = (o.cls || "");
+    $("#rSub").textContent = o.sub || "";
+    copyV = o.copy || "";
+    copyC = o.text || "";
+    $("#copyVal").disabled = !copyV;
+    $("#copyConta").disabled = !copyC;
+    var box = (cur === "prod") ? $("#prodConta") : $("#calcConta");
+    if (copyC) { box.textContent = copyC; box.className = "conta"; }
+    else { box.textContent = "Preencha as etapas 1 e 2 para gerar a conta."; box.className = "conta empty"; }
+  }
+  function copyText(t) {
+    if (navigator.clipboard && navigator.clipboard.writeText) return navigator.clipboard.writeText(t);
+    return new Promise(function (res, rej) {
+      var ta = document.createElement("textarea");
+      ta.value = t; ta.style.position = "fixed"; ta.style.opacity = "0";
+      document.body.appendChild(ta); ta.select();
+      try { document.execCommand("copy") ? res() : rej(); } catch (e) { rej(e); }
+      document.body.removeChild(ta);
+    });
+  }
+  function doCopy(text, okMsg) {
+    if (!text) return;
+    copyText(text).then(function () { $("#rSub").textContent = okMsg; })
+      .catch(function () { $("#rSub").textContent = "Não foi possível copiar. Selecione o texto e copie manualmente."; });
+  }
+  $("#copyVal").addEventListener("click", function () { doCopy(copyV, "Resultado copiado: " + copyV + ". Cole no chamado."); });
+  $("#copyConta").addEventListener("click", function () { doCopy(copyC, "Conta copiada. Cole na abertura do chamado."); });
+
+  /* ================= RETORNO DE PROCESSO ================= */
+  var FREQ = [
+    { v: "diaria", t: "Diária", q: "Quantas vezes por dia?", por: "por dia" },
+    { v: "semanal", t: "Semanal", q: "Quantas vezes por semana?", por: "por semana" },
+    { v: "mensal", t: "Mensal", q: "Quantas vezes por mês?", por: "por mês" },
+    { v: "anual", t: "Anual", q: "Quantas vezes por ano?", por: "por ano" }
+  ];
+  var P = { a: blankSide(), d: blankSide() };
+  function blankSide() { return { h: "", m: "", s: "", f: null, q: "" }; }
+
+  function buildSide(side, etapa, title, hint) {
+    var seg = FREQ.map(function (f) {
+      return '<button type="button" data-side="' + side + '" data-f="' + f.v + '" aria-pressed="false">' + f.t + "</button>";
+    }).join("");
+    return '<div class="card" id="card-' + side + '">' +
+      '<div class="step"><span class="pill">Etapa ' + etapa + "</span><h2>" + title + "</h2></div>" +
+      '<p class="hint top">' + hint + "</p>" +
+      '<span class="field-label">Quanto tempo leva cada execução da atividade?</span>' +
+      '<div class="time">' +
+        '<div><input type="text" class="time-in" id="' + side + '-h" data-side="' + side + '" data-k="h" inputmode="numeric" maxlength="2" placeholder="00" autocomplete="off"><small>horas</small></div>' +
+        '<div><input type="text" class="time-in" id="' + side + '-m" data-side="' + side + '" data-k="m" inputmode="numeric" maxlength="2" placeholder="00" autocomplete="off"><small>minutos</small></div>' +
+        '<div><input type="text" class="time-in" id="' + side + '-s" data-side="' + side + '" data-k="s" inputmode="numeric" maxlength="2" placeholder="00" autocomplete="off"><small>segundos</small></div>' +
+      "</div>" +
+      '<span class="field-label">Com que frequência ela acontece?</span>' +
+      '<div class="seg" id="' + side + '-seg">' + seg + "</div>" +
+      '<span class="field-label" id="' + side + '-ql">Quantas vezes?</span>' +
+      '<input type="text" id="' + side + '-q" data-side="' + side + '" data-k="q" inputmode="numeric" maxlength="6" placeholder="0" autocomplete="off">' +
+      "</div>";
+  }
+  $("#prodCards").innerHTML =
+    buildSide("a", 1, "Cenário anterior", "Levante o tempo dedicado à atividade no cenário anterior à melhoria.") +
+    buildSide("d", 2, "Novo cenário", "Informe o tempo da atividade depois da melhoria (o que sobra fica disponível para outras atividades).");
+
+  $("#prodCards").addEventListener("input", function (e) {
+    var el = e.target;
+    var side = el.getAttribute("data-side"), k = el.getAttribute("data-k");
+    if (!side || !k) return;
+    var val = el.value.replace(/\D/g, "");
+    if ((k === "m" || k === "s") && val !== "" && +val > 59) val = "59";
+    el.value = val;
+    P[side][k] = val;
+    if ((k === "h" || k === "m") && val.length === 2) {
+      var next = $("#" + side + "-" + (k === "h" ? "m" : "s"));
+      if (next) next.focus();
+    }
+    calcProd();
+  });
+  $("#prodCards").addEventListener("focusin", function (e) { if (e.target.tagName === "INPUT") e.target.select(); });
+  $("#prodCards").addEventListener("click", function (e) {
+    var b = e.target.closest("button[data-f]");
+    if (!b) return;
+    var side = b.getAttribute("data-side"), f = b.getAttribute("data-f");
+    P[side].f = f;
+    if (side === "a" && !P.d.f) P.d.f = f;   // conveniência: "depois" herda a frequência de "antes"
+    syncFreqUI();
+    calcProd();
+  });
+  function syncFreqUI() {
+    ["a", "d"].forEach(function (side) {
+      $$("#" + side + "-seg button").forEach(function (b) {
+        b.setAttribute("aria-pressed", String(P[side].f === b.getAttribute("data-f")));
+      });
+      var fr = FREQ.filter(function (x) { return x.v === P[side].f; })[0];
+      $("#" + side + "-ql").textContent = fr ? fr.q : "Quantas vezes?";
+    });
+  }
+
+  function secs(x) { return (+x.h || 0) * 3600 + (+x.m || 0) * 60 + (+x.s || 0); }
+  function timeFilled(x) { return x.h !== "" || x.m !== "" || x.s !== ""; }
+  function perYear(f, q) {
+    q = +q || 0;
+    if (f === "diaria") return q * DIAS_UTEIS_MES * MESES_ANO;
+    if (f === "semanal") return q * SEMANAS_ANO;
+    if (f === "mensal") return q * MESES_ANO;
+    if (f === "anual") return q;
+    return 0;
+  }
+  function hms(total, hp) {
+    var h = Math.floor(total / 3600), m = Math.floor((total % 3600) / 60), s = total % 60;
+    return pad(h, hp) + ":" + pad(m, 2) + ":" + pad(s, 2);
+  }
+  function hm5(total) {                // HHHHH:MM (minutos truncados, como [h]:mm do Excel)
+    var h = Math.floor(total / 3600), m = Math.floor((total % 3600) / 60);
+    return pad(h, 5) + ":" + pad(m, 2);
+  }
+  function contaVezes(x) {
+    var q = +x.q, n = perYear(x.f, x.q);
+    if (x.f === "diaria") return q + " x " + DIAS_UTEIS_MES + " (dias úteis no mês) x " + MESES_ANO + " (meses) = " + num(n) + " vezes/ano";
+    if (x.f === "semanal") return q + " x " + SEMANAS_ANO + " (semanas) = " + num(n) + " vezes/ano";
+    if (x.f === "mensal") return q + " x " + MESES_ANO + " (meses) = " + num(n) + " vezes/ano";
+    return num(n) + " vezes/ano";
+  }
+  function cenarioProd(titulo, x) {
+    var fr = FREQ.filter(function (f) { return f.v === x.f; })[0];
+    var n = perYear(x.f, x.q), tot = secs(x) * n;
+    return [
+      titulo + ": atividade realizada " + (+x.q) + (+x.q === 1 ? " vez " : " vezes ") + fr.por + ", levando " + hms(secs(x), 2) + " cada vez.",
+      "Conta: " + contaVezes(x),
+      "Conta: " + num(n) + " x " + hms(secs(x), 2) + " = " + hms(tot, 5) + " h/ano"
+    ].join("\n");
+  }
+
+  var PLAB = "Ganho anual (horas:minutos)";
+  function calcProd() {
+    var a = P.a, d = P.d;
+    var okA = secs(a) > 0 && a.f && a.q !== "" && +a.q > 0;
+    var okD = timeFilled(d) && d.f && d.q !== "";
+    $("#warnFreq").hidden = !(a.f && d.f && a.f !== d.f);
+    if (!okA || !okD) {
+      showResult({ label: PLAB, value: "00000:00", cls: "idle", sub: "Preencha as etapas 1 e 2 para ver o resultado." });
+      return;
+    }
+    var totA = secs(a) * perYear(a.f, a.q), totD = secs(d) * perYear(d.f, d.q);
+    var gain = totA - totD;
+    if (gain <= 0) {
+      showResult({ label: PLAB, value: "Não houve ganhos", cls: "small", sub: "O tempo anual depois da melhoria não ficou menor que o de antes." });
+      return;
+    }
+    var text = [
+      "RETORNO DE PROCESSO - RENDIMENTO OPERACIONAL",
+      "",
+      cenarioProd("Cenário anterior", a),
+      "",
+      cenarioProd("Novo cenário", d),
+      "",
+      "Resultado: ganho de " + hm5(gain) + " h/ano.",
+      "Conta final: " + hms(totA, 5) + " - " + hms(totD, 5) + " = " + hm5(gain) + " h/ano"
+    ].join("\n");
+    showResult({ label: PLAB, value: hm5(gain), copy: hm5(gain), text: text, sub: "Formato HHHHH:MM, pronto para colar no chamado." });
+  }
+  $("#prodClear").addEventListener("click", function () {
+    P = { a: blankSide(), d: blankSide() };
+    $$("#prodCards input").forEach(function (i) { i.value = ""; });
+    syncFreqUI(); calcProd();
+  });
+
+  /* ================= RETORNO FINANCEIRO ================= */
+  var FIN = {
+    evit: {
+      e1: { hint: "Levante o custo existente no processo ou operação antes da melhoria.", fields: [{ id: "ant", label: "Qual era o custo por mês?", kind: "money" }] },
+      e2: { hint: "Calcule o custo que deixamos de ter com a implementação da melhoria.", fields: [{ id: "novo", label: "Qual é o custo por mês agora?", kind: "money" }] },
+      calc: calcEvit
+    },
+    rec: {
+      e1: { hint: "Levante a receita que era gerada com o processo ou operação (use a média dos últimos meses).", fields: [
+        { id: "q1", label: "Quantos itens por mês?", kind: "int" },
+        { id: "t1", label: "Qual era o ticket médio por unidade?", kind: "money" }] },
+      e2: { hint: "Calcule a receita obtida a partir da implementação da melhoria. Considere apenas ganhos que não aumentaram custos ou despesas.", fields: [
+        { id: "q2", label: "Quantos itens por mês agora?", kind: "int" },
+        { id: "t2", label: "Qual é o ticket médio por unidade agora?", kind: "money" }] },
+      calc: calcRec
+    },
+    red: {
+      e1: { hint: "Levante o custo existente no processo ou operação antes da melhoria.", fields: [{ id: "ant", label: "Qual era o custo por mês?", kind: "money" }] },
+      e2: { hint: "Calcule o novo custo com a implementação da melhoria.", fields: [
+        { id: "novo", label: "Qual é o custo por mês agora?", kind: "money" },
+        { id: "inv", label: "Houve investimento para implantar a melhoria? Qual valor?", kind: "money", hint: "Deixe em branco ou digite 0 se não houve investimento." }] },
+      calc: calcRed
+    }
+  };
+  var F = { evit: {}, rec: {}, red: {} };
+
+  function fieldHTML(f, val) {
+    var inner = f.kind === "money"
+      ? '<div class="money"><b>R$</b><input type="text" inputmode="decimal" placeholder="0,00" autocomplete="off" data-f="' + f.id + '" value="' + (val || "") + '"></div>'
+      : '<input type="text" inputmode="numeric" placeholder="0" autocomplete="off" data-f="' + f.id + '" value="' + (val || "") + '">';
+    return '<span class="field-label">' + f.label + "</span>" + inner + (f.hint ? '<p class="hint">' + f.hint + "</p>" : "");
+  }
+  function stepCard(n, title, cfg, key) {
+    return '<div class="card"><div class="step"><span class="pill">Etapa ' + n + "</span><h2>" + title + "</h2></div>" +
+      '<p class="hint top">' + cfg.hint + "</p>" +
+      cfg.fields.map(function (f) { return fieldHTML(f, F[key][f.id]); }).join("") + "</div>";
+  }
+  function renderCalc(key) {
+    var c = FIN[key];
+    $("#calcForm").innerHTML = stepCard(1, "Cenário anterior", c.e1, key) + stepCard(2, "Novo cenário", c.e2, key);
+  }
+  $("#calcForm").addEventListener("input", function (e) {
+    var el = e.target, id = el.getAttribute("data-f");
+    if (!id) return;
+    var isMoney = !!el.closest(".money");
+    el.value = isMoney ? el.value.replace(/[^\d,.]/g, "") : el.value.replace(/\D/g, "");
+    F[cur][id] = el.value;
+    calcFin();
+  });
+  $("#calcForm").addEventListener("focusin", function (e) { if (e.target.tagName === "INPUT") e.target.select(); });
+  $("#calcClear").addEventListener("click", function () { F[cur] = {}; renderCalc(cur); calcFin(); });
+
+  function calcFin() { showResult(FIN[cur].calc(F[cur])); }
+  var WAIT = "Preencha as etapas 1 e 2 para ver o resultado.";
+
+  function calcEvit(v) {
+    var lab = "Custo evitado no ano (12 meses)";
+    var a = parseBRL(v.ant), n = parseBRL(v.novo);
+    if (isNaN(a) || isNaN(n)) return { label: lab, value: "R$ 0,00", cls: "idle", sub: WAIT };
+    var m = a - n, y = m * MESES_ANO;
+    if (m <= 0) return { label: lab, value: "Não houve ganho", cls: "small", sub: "O custo novo não ficou menor que o custo anterior." };
+    var text = [
+      "RETORNO FINANCEIRO - CUSTO EVITADO",
+      "",
+      "Cenário anterior: custo de " + money(a) + " por mês.",
+      "Novo cenário: custo de " + money(n) + " por mês.",
+      "",
+      "Resultado: teve-se um custo evitado de " + money(m) + " por mês, totalizando uma redução de custo fixo de " + money(y) + " anualmente.",
+      "Conta parte 1: " + money(a) + " - " + money(n) + " = " + money(m) + "/mês",
+      "Conta final: " + money(m) + " x 12 (meses) = " + money(y) + "/ano"
+    ].join("\n");
+    return { label: lab, value: money(y), copy: money(y), text: text, sub: "Pronto para colar no chamado." };
+  }
+
+  function calcRec(v) {
+    var lab = "Aumento de receita por mês";
+    var q1 = parseInt(v.q1, 10), t1 = parseBRL(v.t1), q2 = parseInt(v.q2, 10), t2 = parseBRL(v.t2);
+    if ([q1, t1, q2, t2].some(isNaN)) return { label: lab, value: "R$ 0,00", cls: "idle", sub: WAIT };
+    var r1 = q1 * t1, r2 = q2 * t2, g = r2 - r1;
+    if (g <= 0) return { label: lab, value: "Não houve aumento", cls: "small", sub: "A receita nova não ficou maior que a receita anterior." };
+    var text = [
+      "RETORNO FINANCEIRO - AUMENTO DE RECEITA",
+      "",
+      "Cenário anterior: " + num(q1) + " itens/mês, com ticket médio de " + money(t1) + "/unid.",
+      "Conta: " + num(q1) + " x " + money(t1) + " = " + money(r1) + "/mês",
+      "",
+      "Novo cenário: " + num(q2) + " itens/mês, com ticket médio de " + money(t2) + "/unid.",
+      "Conta: " + num(q2) + " x " + money(t2) + " = " + money(r2) + "/mês",
+      "",
+      "Resultado: teve-se um aumento de receita de " + money(g) + " por mês.",
+      "Conta final: " + money(r2) + " - " + money(r1) + " = " + money(g) + "/mês"
+    ].join("\n");
+    return { label: lab, value: money(g), copy: money(g), text: text, sub: "Resultado mensal, como no exemplo de cálculo. Pronto para colar no chamado." };
+  }
+
+  function calcRed(v) {
+    var lab = "Redução de custo no ano (12 meses)";
+    var a = parseBRL(v.ant), n = parseBRL(v.novo), inv = parseBRL(v.inv);
+    if (isNaN(inv)) inv = 0;
+    if (isNaN(a) || isNaN(n)) return { label: lab, value: "R$ 0,00", cls: "idle", sub: WAIT };
+    var yA = a * MESES_ANO, yN = n * MESES_ANO, red = yA - yN, fin = red - inv;
+    if (fin <= 0) {
+      return { label: lab, value: "Não houve ganho", cls: "small", sub: red > 0 ? "O investimento foi maior que a redução de custo no ano." : "O custo novo não ficou menor que o custo anterior." };
+    }
+    var L = [
+      "RETORNO FINANCEIRO - REDUÇÃO DE CUSTO",
+      "",
+      "Cenário anterior: custo de " + money(a) + "/mês.",
+      "Conta: " + money(a) + " x 12 = " + money(yA) + "/ano",
+      "",
+      "Novo cenário: custo de " + money(n) + "/mês." + (inv > 0 ? " Investimento para implantar a melhoria: " + money(inv) + "." : ""),
+      "Conta: " + money(n) + " x 12 = " + money(yN) + "/ano",
+      ""
+    ];
+    if (inv > 0) {
+      L.push("Resultado: teve-se uma redução de custo de " + money(fin) + " no ano, considerando que a redução na conta foi de " + money(red) + " e o investimento de " + money(inv) + ".");
+      L.push("Conta parte 1: " + money(yA) + " - " + money(yN) + " = " + money(red) + "/ano");
+      L.push("Conta final: " + money(red) + " - " + money(inv) + " = " + money(fin) + "/ano");
+    } else {
+      L.push("Resultado: teve-se uma redução de custo de " + money(fin) + " no ano.");
+      L.push("Conta final: " + money(yA) + " - " + money(yN) + " = " + money(fin) + "/ano");
+    }
+    return { label: lab, value: money(fin), copy: money(fin), text: L.join("\n"), sub: "Pronto para colar no chamado." };
+  }
+
+  // Atalhos por link: #processo, #financeiro, #custo-evitado, #receita, #reducao
+  var HASH = { "processo": "prod", "financeiro": "fin", "custo-evitado": "evit", "receita": "rec", "reducao": "red" };
+  var h = (location.hash || "").replace("#", "");
+  if (HASH[h]) go(HASH[h]);
+})();
+</script>
+</body>
+</html>
