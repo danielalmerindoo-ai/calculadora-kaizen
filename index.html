@@ -206,6 +206,23 @@
     #rValue { font-size: 3.2rem; }
     #rValue.small { font-size: 1.4rem; }
   }
+
+  @media (min-width: 900px) { #home, #fin { max-width: none; } }
+  @media (min-width: 1100px) {
+    #home { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 72px; align-items: center; min-height: calc(100vh - 230px); }
+    #home .hero { margin: 0; }
+    #home .hero-1, #home .hero-2 { font-size: clamp(3.4rem, 5vw, 5rem); }
+    #home .hero-3 { font-size: 1.2rem; margin-top: 6px; }
+    #home .home-q { font-size: 1.3rem; }
+    #home .tiles { grid-template-columns: 1fr; }
+    #home .choice { flex-direction: row; align-items: center; justify-content: space-between; min-height: 0; padding: 30px 28px; }
+  }
+  @media (min-width: 1500px) {
+    body { font-size: 19px; }
+    .top-in, .wrap { max-width: 1320px; }
+    .logo { width: 280px; }
+    .layout.with-bar { grid-template-columns: minmax(0, 1fr) 430px; }
+  }
 </style>
 </head>
 <body>
@@ -228,11 +245,6 @@
 
   <div class="layout" id="layout">
     <div class="main">
-      <div class="hero" id="hero">
-        <p class="hero-1">Calculadora</p>
-        <p class="hero-2">de Kaizen</p>
-        <p class="hero-3">Viva a cultura da melhoria contínua.</p>
-      </div>
       <div id="head" hidden>
         <p class="kicker" id="kicker"></p>
         <h1 class="page" id="pageTitle"></h1>
@@ -240,6 +252,12 @@
 
       <!-- INÍCIO -->
       <section id="home">
+      <div class="hero" id="hero">
+        <p class="hero-1">Calculadora</p>
+        <p class="hero-2">de Kaizen</p>
+        <p class="hero-3">Viva a cultura da melhoria contínua.</p>
+      </div>
+        <div class="home-pick">
         <p class="home-q">Vamos calcular o retorno da sua melhoria? Escolha uma opção:</p>
         <div class="tiles">
           <button class="choice" type="button" data-go="prod">
@@ -258,6 +276,7 @@
           </button>
         </div>
         <p class="tip">Preencha as etapas, copie o resultado e a conta e cole no chamado.</p>
+        </div>
       </section>
 
       <!-- RETORNO FINANCEIRO: ESCOLHA -->
